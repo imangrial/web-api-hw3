@@ -1,0 +1,18 @@
+_______________________________________________________________________________
+Question:
+Basic Authorization is easily handled in the main flow, without the need for an
+additional proxy. Give one reason (there are many) OAuth tokens should not be
+granted in the main flow, assuming the user has sent in the correct credentials.
+_______________________________________________________________________________
+
+Answer:
+
+    You would want to use OAuth tokens in a seperate proxy for security reasons.
+    When you have all of your security integrated with the main flow with the proxy
+    you are at risk of having the sensitive data presented to the open world. If there
+    is a breach of your proxy, then the OAuth information is readily available to the
+    hackers that breached.
+
+    Also when performing updates to your OAuth policies, it can be changed without even touching
+    your main proxy. Thus only a small and segregated segment of your code (the OAuth resource)
+    will have to be manipulated leaving the business logic intact.
